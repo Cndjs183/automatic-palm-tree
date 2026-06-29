@@ -1,0 +1,20 @@
+local UIS = game:GetService("UserInputService")
+local mouse = game.Players.LocalPlayer:GetMouse()
+local active = false
+
+UIS.InputBegan:Connect(function(input, gpe)
+    if gpe then return end
+    if input.KeyCode == Enum.KeyCode.E then
+        active = true
+        while active do
+            mouse1click()
+            task.wait(0.1)  -- скорость стройки (0.1 секунды)
+        end
+    end
+end)
+
+UIS.InputEnded:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.E then
+        active = false
+    end
+end)
